@@ -18,21 +18,40 @@ public class Task3 {
         System.out.println("if you want to sort the numbers in descending order.");
         String line = "";
         while (true) {
-            if(scanner.nextLine().equals("sort ascending")) {
-                Arrays.sort(sequence);
+            line = scanner.nextLine();
+            if (line.equals("sort ascending")) {
+                line = "";
+                for (int i = 0; i < sequence.length; i++) {
+                    for (int j = 0; j < sequence.length - 1; j++) {
+                        if (sequence[j] > sequence[j + 1]) {
+                            double swap = sequence[j];
+                            sequence[j] = sequence[j + 1];
+                            sequence[j + 1] = swap;
+                        }
+                    }
+                }
                 System.out.println("Your numbers are sorted in ascending order.");
                 for (int i = 0; i < sequence.length; i++) {
-                    line+=sequence[i]+", ";
+                    line += sequence[i] + ", ";
                 }
-                System.out.println(line.substring(0, line.length()-2));
+                System.out.println(line.substring(0, line.length() - 2));
                 break;
-            } else if(scanner.nextLine().equals("sort descending")) {
-                Arrays.sort(sequence);
-                System.out.println("Your numbers are sorted in descending order.");
-                for (int i = sequence.length-1; i >= 0; i--) {
-                    line+=sequence[i]+", ";
+            } else if (line.equals("sort descending")) {
+                line = "";
+                for (int i = 0; i < sequence.length; i++) {
+                    for (int j = 0; j < sequence.length - 1; j++) {
+                        if (sequence[j] > sequence[j + 1]) {
+                            double swap = sequence[j];
+                            sequence[j] = sequence[j + 1];
+                            sequence[j + 1] = swap;
+                        }
+                    }
                 }
-                System.out.println(line.substring(0, line.length()-2));
+                System.out.println("Your numbers are sorted in descending order.");
+                for (int i = sequence.length - 1; i >= 0; i--) {
+                    line += sequence[i] + ", ";
+                }
+                System.out.println(line.substring(0, line.length() - 2));
                 break;
             }
         }

@@ -17,21 +17,34 @@ public class Task1 {
                 break;
             }
         }
-        System.out.println(transliteration(line.toLowerCase(Locale.ROOT)));
+        System.out.println(transliteration(line));
     }
 
     static String transliteration(String inputString) {
-        String[] russianAlphabet = {"а", "б", "в", "г", "д", "е", "ё", "ж", "з", "и", "й",
+        String[] russianAlphabetLowerCase = {"а", "б", "в", "г", "д", "е", "ё", "ж", "з", "и", "й",
                                     "к", "л", "м", "н", "о", "п", "р", "с", "т", "у", "ф",
                                     "х", "ц", "ч", "ш", "щ", "ъ", "ы", "ь", "э", "ю", "я", " "};
-        String[] lettersForTransliteration = {"a", "b", "v", "g", "d", "e", "yo", "zh", "z", "i", "yi",
+
+        String[] russianAlphabetUpperCase = {"А", "Б", "В", "Г", "Д", "Е", "Ё", "Ж", "З", "И", "Й",
+                                            "К", "Л", "М", "Н", "О", "П", "Р", "С", "Т", "У", "Ф",
+                                            "Х", "Ц", "Ч", "Ш", "Щ", "Ъ", "Ы", "Ь", "Э", "Ю", "Я", " "};
+
+        String[] lettersForTransliterationLowerCase = {"a", "b", "v", "g", "d", "e", "yo", "zh", "z", "i", "yi",
                                             "k", "l", "m", "n", "o", "p", "r", "s", "t", "u", "f",
                                             "h", "c", "ch", "sh", "shch", "″", "y", "′", "e", "yu", "ya", " "};
+
+        String[] lettersForTransliterationUpperCase = {"A", "B", "V", "G", "D", "E", "YO", "ZH", "Z", "I", "YI",
+                                                    "K", "L", "M", "N", "O", "P", "R", "S", "T", "U", "F",
+                                                    "H", "C", "CH", "SH", "SHCH", "″", "Y", "′", "E", "YU", "YA", " "};
+
         String transliteratedString = "";
         for (int i = 0; i < inputString.length(); i++) {
-            for (int j = 0; j < russianAlphabet.length; j++) {
-                if(String.valueOf(inputString.charAt(i)).equals(russianAlphabet[j])) {
-                    transliteratedString+=lettersForTransliteration[j];
+            for (int j = 0; j < russianAlphabetLowerCase.length; j++) {
+                if(String.valueOf(inputString.charAt(i)).equals(russianAlphabetLowerCase[j])) {
+                    transliteratedString+=lettersForTransliterationLowerCase[j];
+                    break;
+                } else if(String.valueOf(inputString.charAt(i)).equals(russianAlphabetUpperCase[j])){
+                    transliteratedString+=lettersForTransliterationUpperCase[j];
                     break;
                 }
             }
